@@ -34,8 +34,9 @@
 
 plot.irf=function(x,impulse,response,alpha=0.05,lty.cb=2,lwd.cb=1,...){
   bootirf=x$density[[impulse]][[response]]
-  ir=x$point.irf[[impulse]][,response]
-  graphics::plot(ir,type="l",...)
+  #ir=x$point.irf[[impulse]][,response]
+  aux=round(stats::quantile(1:ncol(bootirf),probs=0.5))
+  graphics::plot(bootirf[,aux],type="l",...)
   graphics::abline(h=0,col="yellow",lty=2)
   if(!is.null(bootirf)){
     for(i in 1:length(alpha)){

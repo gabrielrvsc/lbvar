@@ -50,7 +50,7 @@ irfaux=function(object,ident,h,unity.shock=TRUE){
 identaux=function(object){
   p=object$p
   Ts=object$Ts
-  covmat_e=MCMCpack::riwish(Ts[2]+2+Ts[1]-p*ncol(object$Y),object$covmat*Ts[3])
+  covmat_e=MCMCpack::riwish(Ts[2]+2+Ts[1]-p*ncol(object$Y)-1,object$covmat*Ts[3])
   choles=chol(covmat_e)
   covmat_u_sqrt=diag(diag(choles))
 
