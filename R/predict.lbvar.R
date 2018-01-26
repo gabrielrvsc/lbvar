@@ -24,7 +24,7 @@
 #'
 #' @references
 #' Garcia, Medeiros and Vasconcelos (2017).
-#' @seealso \code{\link{lbvar}}
+#' @seealso  \code{\link{lbvar}}
 
 
 predict.lbvar=function(object,h=0,newdata=NULL,...){
