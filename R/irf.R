@@ -42,7 +42,6 @@ irf=function (object, ident, h, boot=FALSE, M=100, unity.shock = TRUE)
     return(result)
   }
 
-  cl=class(object)[2]
   Y = as.matrix(object$Y)
   xreg=object$xreg
   N = object$N

@@ -111,7 +111,7 @@ lbvar=function (Y, p = 1, delta = 0, lambda = 0.05, xreg = NULL,ps=FALSE,tau=10*
   # == betas and fitted == #
   betas=stats::coef(stats::lm(Ystar~-1+Xstar))
   fitted = cbind(1, Xreg) %*% betas
-  sigmae = t(Ystar - cbind(Xstar) %*% betas) %*%
+  sigmae =(1/nrow(Ystar))* t(Ystar - cbind(Xstar) %*% betas) %*%
     (Ystar - cbind(Xstar) %*% betas)
   coef.by.equation = t(betas)
 
