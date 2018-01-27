@@ -4,7 +4,7 @@
 \alias{irf}
 \title{VAR ipulse response functions}
 \usage{
-irf(object, ident, h, boot = FALSE, M = 100, unity.shock = TRUE)
+irf(object, ident, h, M = 100, unity.shock = TRUE)
 }
 \arguments{
 \item{object}{A lbvar object.}
@@ -13,19 +13,17 @@ irf(object, ident, h, boot = FALSE, M = 100, unity.shock = TRUE)
 
 \item{h}{Number of steps ahead.}
 
-\item{boot}{If TRUE bootstrap confidence bands are calculated (default=FALSE).}
-
-\item{M}{Number of bootstrap replications}
+\item{M}{Number of draws.}
 
 \item{unity.shock}{If TRUE the impulses are equal 1. If FALSE the impulses are of one standard deviation (default=TRUE).}
 }
 \value{
 An object with S3 class "irf".
 \item{point.irf}{A list with the point ir coefficients. Each element in the list is a matrix with the response on all variables cause by an impulse on the variable that gives name to the matrix.}
-\item{density}{Returned only if boot=TRUE. A list that stores the boostrap ir coefficients. Each element in the list is another list with the response on all variables cause by an impulse on the variable that gives name to the list.}
+\item{density}{A list that stores the ir coefficients from each draw. Each element in the list is another list with the response on all variables cause by an impulse on the variable that gives name to the list.}
 }
 \description{
-Estimates impulse response coefficients of a lbvar model h steps ahead. Confidence bands may be computed by bootstrap.
+Estimates impulse response coefficients of a lbvar model h steps ahead drawing from the posterior.
 }
 \examples{
 ## == This example uses the Brazilian inflation data from
@@ -37,7 +35,7 @@ data("BRinf")
 Y=BRinf[,1:59]# remove expectation variables
 modelB=lbvar(Y,p=3)
 identB=identification(modelB)
-irfB=irf(modelB,identB,h=12,boot = TRUE,M=100)
+irfB=irf(modelB,identB,h=12,M=100)
 plot(irfB,1,2,alpha=0.1)
 
 

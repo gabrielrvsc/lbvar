@@ -19,7 +19,7 @@
 #' Y=BRinf[,1:59]# remove expectation variables
 #' modelB=lbvar(Y,p=3)
 #' identB=identification(modelB)
-#' irfB=irf(modelB,identB,h=12,boot = TRUE,M=100)
+#' irfB=irf(modelB,identB,h=12,M=100)
 #' extract.irf(irfB,1,2,probs=0.5)
 #'
 #'
@@ -30,8 +30,8 @@
 
 
 extract.irf=function(object,impulse,response,probs=0.5){
-  bootirf=object$density[[impulse]][[response]]
-  aux=round(stats::quantile(1:ncol(bootirf),probs=0.5))
-  irfs=bootirf[,aux]
+  drawirf=object$density[[impulse]][[response]]
+  aux=round(stats::quantile(1:ncol(drawirf),probs=0.5))
+  irfs=drawirf[,aux]
   return(irfs)
 }

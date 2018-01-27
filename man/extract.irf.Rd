@@ -28,7 +28,7 @@ data("BRinf")
 Y=BRinf[,1:59]# remove expectation variables
 modelB=lbvar(Y,p=3)
 identB=identification(modelB)
-irfB=irf(modelB,identB,h=12,boot = TRUE,M=100)
+irfB=irf(modelB,identB,h=12,M=100)
 extract.irf(irfB,1,2,probs=0.5)
 
 

@@ -1,17 +1,16 @@
 #' VAR ipulse response functions
 #'
-#' Estimates impulse response coefficients of a lbvar model h steps ahead. Confidence bands may be computed by bootstrap.
+#' Estimates impulse response coefficients of a lbvar model h steps ahead drawing from the posterior.
 #'
 #'
 #' @param object A lbvar object.
 #' @param ident A list with two elements: $A must be a matrix with the contemporaneus coefficients of a identified VAR and $sigma2u must be the structural shocks covariance matrix. This is the output of the function chol.identification.
 #' @param h Number of steps ahead.
-#' @param boot If TRUE bootstrap confidence bands are calculated (default=FALSE).
-#' @param M Number of bootstrap replications
+#' @param M Number of draws.
 #' @param unity.shock If TRUE the impulses are equal 1. If FALSE the impulses are of one standard deviation (default=TRUE).
 #' @return An object with S3 class "irf".
 #' \item{point.irf}{A list with the point ir coefficients. Each element in the list is a matrix with the response on all variables cause by an impulse on the variable that gives name to the matrix.}
-#' \item{density}{Returned only if boot=TRUE. A list that stores the boostrap ir coefficients. Each element in the list is another list with the response on all variables cause by an impulse on the variable that gives name to the list.}
+#' \item{density}{A list that stores the ir coefficients from each draw. Each element in the list is another list with the response on all variables cause by an impulse on the variable that gives name to the list.}
 #' @keywords VAR, irf, High-dimension, Bayesian models
 #' @export
 #' @examples
@@ -24,7 +23,7 @@
 #' Y=BRinf[,1:59]# remove expectation variables
 #' modelB=lbvar(Y,p=3)
 #' identB=identification(modelB)
-#' irfB=irf(modelB,identB,h=12,boot = TRUE,M=100)
+#' irfB=irf(modelB,identB,h=12,M=100)
 #' plot(irfB,1,2,alpha=0.1)
 #'
 #'
@@ -33,14 +32,9 @@
 #' @seealso \code{\link{predict}}, \code{\link{lbvar}}, \code{\link{identification}}, \code{\link{plot.irf}}
 
 
-irf=function (object, ident, h, boot=FALSE, M=100, unity.shock = TRUE)
+irf=function (object, ident, h, M=100, unity.shock = TRUE)
 {
-  pointirf = irfaux(object, ident, h, unity.shock)
-  if(boot==FALSE){
-    result=list(point.irf=pointirf)
-    class(result)="irf"
-    return(result)
-  }
+  #pointirf = irfaux(object, ident, h, unity.shock)
 
   Y = as.matrix(object$Y)
   xreg=object$xreg
@@ -65,10 +59,10 @@ irf=function (object, ident, h, boot=FALSE, M=100, unity.shock = TRUE)
   names(save.irf) = colnames(Y)
   for (m in 1:M) {
     identaux = identaux(object)
-    irfboot = irfaux(object, identaux, h = h, unity.shock = unity.shock)
+    irfdraw = irfaux(object, identaux, h = h, unity.shock = unity.shock)
     for (i in 1:nvar) {
       for (j in 1:nvar) {
-        save.irf[[i]][[j]][, m] = irfboot[[i]][, j]
+        save.irf[[i]][[j]][, m] = irfdraw[[i]][, j]
       }
     }
   }
@@ -79,7 +73,7 @@ irf=function (object, ident, h, boot=FALSE, M=100, unity.shock = TRUE)
     }
   }
   aux = irfaux(object, ident, h, unity.shock)
-  result=list(point.irf = pointirf, density = save.irf)
+  result=list(density = save.irf, call=match.call())
   class(result)="irf"
   return(result)
 }
