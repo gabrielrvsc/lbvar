@@ -36,13 +36,14 @@ plot.irf=function(x,impulse,response,alpha=0.05,lty.cb=2,lwd.cb=1,...){
   drawirf=x$density[[impulse]][[response]]
   #ir=x$point.irf[[impulse]][,response]
   aux=round(stats::quantile(1:ncol(drawirf),probs=0.5))
-  graphics::plot(drawirf[,aux],type="l",...)
+  len=0:(nrow(drawirf)-1)
+  graphics::plot(len,drawirf[,aux],type="l",...)
   graphics::abline(h=0,col="yellow",lty=2)
   if(!is.null(drawirf)){
     for(i in 1:length(alpha)){
       aux=round(stats::quantile(1:ncol(drawirf),probs=c(alpha[i]/2,1-alpha[i]/2)))
-      graphics::lines(drawirf[,aux[1]],col=i+1,lty=lty.cb,lwd=lwd.cb)
-      graphics::lines(drawirf[,aux[2]],col=i+1,lty=lty.cb,lwd=lwd.cb)
+      graphics::lines(len,drawirf[,aux[1]],col=i+1,lty=lty.cb,lwd=lwd.cb)
+      graphics::lines(len,drawirf[,aux[2]],col=i+1,lty=lty.cb,lwd=lwd.cb)
     }
   }
 }

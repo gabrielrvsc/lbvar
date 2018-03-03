@@ -31,7 +31,7 @@
 
 extract.irf=function(object,impulse,response,probs=0.5){
   drawirf=object$density[[impulse]][[response]]
-  aux=round(stats::quantile(1:ncol(drawirf),probs=0.5))
+  aux=round(stats::quantile(1:ncol(drawirf),probs=probs))
   irfs=drawirf[,aux]
   return(irfs)
 }
