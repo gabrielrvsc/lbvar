@@ -9,9 +9,9 @@
 data(BNDESdata)
 }
 \description{
-This dataset contains all the variables used in the Bayesian VAR estimated by Barboza and Varsoncelos 2018. The base model does not use the capital goods CG variable. Variables are in the same order used in the identification.
+This dataset contains all the variables used in the Bayesian VAR estimated by Barboza and Varsoncelos 2018. The base model does not use the capital goods CG variable. Variables are in the same order used in the identification. The variables are already treated fo the model.
 }
 \references{
-Barboza and Vasconcelos (2018).
+Barboza and Vasconcelos (2018). Measuring the aggregate effects of the Brazilian Development Bank on investment
 }
 \keyword{datasets}

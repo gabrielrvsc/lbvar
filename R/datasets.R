@@ -25,12 +25,12 @@ NULL
 
 #' Dataset from Barboza and Vasconcelos 2018
 #'
-#' This dataset contains all the variables used in the Bayesian VAR estimated by Barboza and Varsoncelos 2018. The base model does not use the capital goods CG variable. Variables are in the same order used in the identification.
+#' This dataset contains all the variables used in the Bayesian VAR estimated by Barboza and Varsoncelos 2018. The base model does not use the capital goods CG variable. Variables are in the same order used in the identification. The variables are already treated fo the model.
 #'
 #' @docType data
 #' @keywords datasets
 #' @name BNDESdata
 #' @usage data(BNDESdata)
 #' @format A matrix with 180 rows and 12 variables.
-#' @references Barboza and Vasconcelos (2018).
+#' @references Barboza and Vasconcelos (2018). Measuring the aggregate effects of the Brazilian Development Bank on investment
 NULL
