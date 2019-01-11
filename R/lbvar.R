@@ -93,7 +93,7 @@ lbvar=function (Y, p = 1, delta = 0, lambda = 0.05, xreg = NULL,ps=FALSE,tau=10*
   Xd = cbind(c(rep(0, nrow(aux6) - 1), 0.1), aux6)
 
   if(ps==TRUE){
-    YDps=diag(colMeans(Yreg))/tau
+    YDps=diag(delta*colMeans(Yreg))/tau
     XDps=cbind(0,kronecker(t(1:p),YDps))
     if(length(xreg)>0){
       aux=matrix(0,nrow(XDps),ncol(Xd)-ncol(XDps))
