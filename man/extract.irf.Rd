@@ -4,7 +4,7 @@
 \alias{extract.irf}
 \title{Extract impulse-response series from irf objects}
 \usage{
-extract.irf(object, impulse, response, probs = 0.5)
+\method{extract}{irf}(object, impulse, response, probs = 0.5)
 }
 \arguments{
 \item{object}{A irf object.}

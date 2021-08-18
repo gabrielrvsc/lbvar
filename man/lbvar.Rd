@@ -4,8 +4,15 @@
 \alias{lbvar}
 \title{Estimate Large Bayesian VARs}
 \usage{
-lbvar(Y, p = 1, delta = 0, lambda = 0.05, xreg = NULL, ps = FALSE,
-  tau = 10 * lambda)
+lbvar(
+  Y,
+  p = 1,
+  delta = 0,
+  lambda = 0.05,
+  xreg = NULL,
+  ps = FALSE,
+  tau = 10 * lambda
+)
 }
 \arguments{
 \item{Y}{Time-series matrix or data.frame with the VAR endogenous variables.}

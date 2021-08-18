@@ -4,7 +4,9 @@
 \name{BRinf}
 \alias{BRinf}
 \title{A dataset used in the examples}
-\format{A matrix with 156 rows and 92 variables.}
+\format{
+A matrix with 156 rows and 92 variables.
+}
 \usage{
 data(BRinf)
 }

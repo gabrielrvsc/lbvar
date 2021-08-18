@@ -4,7 +4,9 @@
 \name{BNDESdata}
 \alias{BNDESdata}
 \title{Dataset from Barboza and Vasconcelos 2018}
-\format{A matrix with 180 rows and 12 variables.}
+\format{
+A matrix with 180 rows and 12 variables.
+}
 \usage{
 data(BNDESdata)
 }

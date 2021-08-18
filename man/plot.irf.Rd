@@ -4,8 +4,7 @@
 \alias{plot.irf}
 \title{Plot impulse response funtion}
 \usage{
-\method{plot}{irf}(x, impulse, response, alpha = 0.05, lty.cb = 2,
-  lwd.cb = 1, ...)
+\method{plot}{irf}(x, impulse, response, alpha = 0.05, lty.cb = 2, lwd.cb = 1, ...)
 }
 \arguments{
 \item{x}{A irf object.}

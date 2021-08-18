@@ -4,7 +4,9 @@
 \name{voldata}
 \alias{voldata}
 \title{A dataset used in the examples}
-\format{A dataframe with 5521 rows and 30 variables.}
+\format{
+A dataframe with 5521 rows and 30 variables.
+}
 \usage{
 data(voldata)
 }

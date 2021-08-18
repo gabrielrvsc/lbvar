@@ -4,9 +4,18 @@
 \alias{fitLambda}
 \title{Fit the parameter lambda of the Bayesian VAR}
 \usage{
-fitLambda(Y, variables = 1, lambdaseq = seq(0, 1, 0.1), p = 1,
-  p.reduced = p, delta = 0, xreg = NULL, scale = TRUE, ps = FALSE,
-  tau = 10 * lambdaseq)
+fitLambda(
+  Y,
+  variables = 1,
+  lambdaseq = seq(0, 1, 0.1),
+  p = 1,
+  p.reduced = p,
+  delta = 0,
+  xreg = NULL,
+  scale = TRUE,
+  ps = FALSE,
+  tau = 10 * lambdaseq
+)
 }
 \arguments{
 \item{Y}{Time-series matrix or data.frame with the VAR endogenous variables.}

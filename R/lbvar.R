@@ -156,7 +156,7 @@ lbvar=function (Y, p = 1, delta = 0, lambda = 0.05, xreg = NULL,ps=FALSE,tau=10*
 
   result=list(coef.by.equation = coef.by.equation, coef.by.block = coef.by.block,
               fitted.values = fitted , residuals=residuals, Y = Y, p = p, N=N, covmat = sigmae,
-              xreg = xreg, Ts = c(T = nrow(Xreg), Td = nrow(Xd), Tstar = nrow(Xstar)),delta=delta,lambda=lambda,ps=ps,tau=tau,call=match.call())
+              xreg = xreg, Ts = c(T = nrow(Xreg), Td = nrow(Xd), Tstar = nrow(Xstar)),delta=delta,lambda=lambda,ps=ps,tau=tau,Ystar=Ystar,Xstar=Xstar,call=match.call())
   class(result)=c("lbvar")
 
   return(result)
