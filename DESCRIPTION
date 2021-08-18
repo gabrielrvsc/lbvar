@@ -9,9 +9,8 @@ Description: This packages contains a set of functions with methods for large Ba
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: TRUE
-RoxygenNote: 6.0.1
+RoxygenNote: 7.1.1
 Depends: R (>= 2.10)
 Imports: 
     Matrix,
     MCMCpack
-
